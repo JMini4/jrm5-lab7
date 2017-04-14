@@ -1,0 +1,52 @@
+Julia Mini
+Lab Section: Thursday Afternoon 1-4
+Lab 7 Answers
+
+(a) The difference in the height of the towers for the best solution for n = 15
+is 9.704773256302701E-4. 
+
+(b) 
+
+    n  |  real time
+--------------------
+    5  |  0m0.162s
+    6  |  0m0.144s
+    7  |  0m0.148s
+    8  |  0m0.188s
+    9  |  0m0.146s
+    10 |  0m0.137s
+    11 |  0m0.142s
+    12 |  0m0.141s
+    13 |  0m0.190s
+    14 |  0m0.151s
+    15 |  0m0.174s
+    16 |  0m0.190s
+    17 |  0m0.234s
+    18 |  0m0.332s
+    19 |  0m0.566s
+    20 |  0m1.093s
+    21 |  0m1.961s
+    22 |  0m3.940s
+    23 |  0m8.102s
+    24 |  0m16.507s
+    25 |  0m34.179s
+
+The reason why the curve is this shape is because the program runs in O(2^n) time.
+This is due to the bit mask and that it must check up to 2^n subsets, causing this 
+program to become very slow when n becomes large. 
+
+(c) Using my data from above, I know that there is some constant times 2^n = time. 
+So I calculated x * 2^25 = 34 which gave me an x value of roughly 0.00000101328.
+Thus to predict 40 blocks the equation is 0.000001013*2^40 = x, and this model
+predicts that x = 1,114,113 seconds and for 50 blocks the equation is
+0.000001013*2^50 = x, thus the model predicts that x = 1,140,851,857 seconds. 
+
+(d) I would redesign my solution to Two Towers by making use of the SubsetIterator 
+class and have a vector of block faces that I would want to iterate over. A benefit 
+of this is that within the for loop in my main method that goes from bitmask up
+to max (2^n)-1, I could use the next and hasNext methods of the SubsetIterator 
+class. The main benefit of the SubsetIterator solution is that it abstracts the 
+code so that the approach can be applied to many problems not just the Two Towers
+problem. However, my solution and the solution using SubsetIterator have the same
+time complexity, but my solution takes up less space. The SubsetIterator solution
+uses up spaces by making data structures such as an iterator and a vector. 
